@@ -7,6 +7,9 @@ export default class Options extends Component {
     constructor(props) {
         super(props);
         this.state = { blockedList: [] }
+
+        this.blockUrl = this.blockUrl.bind(this);
+        this.unblockUrl = this.unblockUrl.bind(this);
     }
 
     componentDidMount() {
@@ -41,7 +44,7 @@ export default class Options extends Component {
         );
     }
 
-    blockUrl = () => {
+    blockUrl() {
         var element = document.getElementById("urlToBlock");
         var urlToBlock = element.value;
         console.log("URL to block: " + urlToBlock);
@@ -80,10 +83,26 @@ export default class Options extends Component {
                 <h3>Currently blocked URLs:</h3>
                 <ul>
                     {this.state.blockedList.map(rule =>
-                        <li>{rule.condition.urlFilter}</li>
+                        <div>
+                            <li>{rule.condition.urlFilter}</li>
+                            <button onClick={this.unblockUrl.bind(this, rule.id)}>Remove</button>
+                        </div>
                     )}
                 </ul>
             </div>
         );
+    }
+
+    unblockUrl(id) {
+        console.log("unblocking rule with id: " + id);
+
+        var updateRuleOptions = {
+            removeRuleIds: [id],
+            addRules: []
+        }
+
+        chrome.declarativeNetRequest.updateDynamicRules(updateRuleOptions, () => {
+            this.populateBlockedList();
+        });
     }
 }
