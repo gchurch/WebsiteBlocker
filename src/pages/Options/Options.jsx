@@ -58,15 +58,21 @@ export default class Options extends Component {
         var urlToBlock = inputElement.value;
         console.log("URL to block: " + urlToBlock);
 
-        var updateRuleOptions = this.createUpdateRuleOptionsToBlockUrl(urlToBlock);
+        var uniqueId = this.createUniqueIdForRule();
+        var updateRuleOptions = this.createUpdateRuleOptionsToBlockUrl(urlToBlock, uniqueId);
 
         chrome.declarativeNetRequest.updateDynamicRules(updateRuleOptions, () => {
             this.updateBlockedUrlList();
+            this.saveTimeOfBlockingToLocalStorage(uniqueId);
         });
     }
 
-    createUpdateRuleOptionsToBlockUrl(urlToBlock) {
-        var uniqueId = this.createUniqueIdForRule();
+    saveTimeOfBlockingToLocalStorage(ruleId) {
+        var timeNow = new Date().getTime();
+        localStorage.setItem(ruleId, timeNow);
+    }
+
+    createUpdateRuleOptionsToBlockUrl(urlToBlock, uniqueId) {
         var updateRuleOptions = {
             removeRuleIds: [],
             addRules: [
@@ -100,14 +106,27 @@ export default class Options extends Component {
                 <h3>Currently blocked URLs:</h3>
                 <ul>
                     {this.state.blockedUrlList.map(rule =>
-                        <div>
-                            <li>{rule.condition.urlFilter}</li>
+                        <li>
+                            <p>{rule.condition.urlFilter}</p>
+                            <p>Time since URL has been blocked: {this.timeSinceUrlWasBlocked(rule.id)}ms ({this.timeSinceUrlWasBlocked(rule.id) / 1000}s)</p>
                             <button onClick={this.unblockUrl.bind(this, rule.id)}>Remove</button>
-                        </div>
+                        </li>
                     )}
                 </ul>
             </div>
         );
+    }
+
+    timeSinceUrlWasBlocked(ruleId) {
+        var timeNow = new Date().getTime();
+        var timeOfBlocking = this.loadTimeOfBlockingFromLocalStorage(ruleId);
+        var timeDifference = timeNow - timeOfBlocking;
+        return timeDifference;
+    }
+
+    loadTimeOfBlockingFromLocalStorage(ruleId) {
+        var timeOfBlocking = localStorage.getItem(ruleId);
+        return timeOfBlocking;
     }
 
     unblockUrl(id) {
