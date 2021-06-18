@@ -14,10 +14,12 @@ export default class Options extends Component {
     }
 
     populateBlockedList() {
-        chrome.declarativeNetRequest.getDynamicRules((rules) => {
-            console.log(rules);
-            this.setState({ blockedList: rules });
-        });
+        chrome.declarativeNetRequest.getDynamicRules(
+            (rules) => {
+                console.log(rules);
+                this.setState({ blockedList: rules });
+            }
+        );
     }
 
     render() {
@@ -27,7 +29,7 @@ export default class Options extends Component {
                 {this.renderForm()}
                 {this.renderCurrentlyBlockedUrls()}
             </div>
-        )
+        );
     }
 
     renderForm() {
@@ -36,23 +38,13 @@ export default class Options extends Component {
                 Url to add to block list: <input id="urlToBlock" type="text"></input>
                 <button onClick={this.blockUrl}>Add</button>
             </div>
-        )
+        );
     }
 
-    createUniqueId() {
-        var uniqueId = 1;
-        for (var i = 0; i < this.state.blockedList.length; i++) {
-            if (uniqueId <= this.state.blockedList[i].id) {
-                uniqueId = this.state.blockedList[i].id + 1;
-            }
-        }
-        return uniqueId;
-    }
-
-    blockUrl() {
+    blockUrl = () => {
         var element = document.getElementById("urlToBlock");
         var urlToBlock = element.value;
-        console.log(urlToBlock);
+        console.log("URL to block: " + urlToBlock);
 
         var uniqueId = this.createUniqueId();
         var updateRuleOptions = {
@@ -66,10 +58,20 @@ export default class Options extends Component {
                 }
             ]
         }
-        var self = this;
+
         chrome.declarativeNetRequest.updateDynamicRules(updateRuleOptions, () => {
-            self.populateBlockedList();
+            this.populateBlockedList();
         });
+    }
+
+    createUniqueId() {
+        var uniqueId = 1;
+        for (var i = 0; i < this.state.blockedList.length; i++) {
+            if (uniqueId <= this.state.blockedList[i].id) {
+                uniqueId = this.state.blockedList[i].id + 1;
+            }
+        }
+        return uniqueId;
     }
 
     renderCurrentlyBlockedUrls() {
