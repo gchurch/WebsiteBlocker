@@ -29,7 +29,8 @@ export default class Options extends Component {
     render() {
         return (
             <div>
-                <h1>OPTIONS PAGE</h1>
+                <h1>Website Blocker</h1>
+                <h2>Options Page</h2>
                 {this.renderFormToBlockUrl()}
                 {this.renderBlockedUrlsList()}
             </div>
