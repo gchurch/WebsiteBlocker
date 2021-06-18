@@ -108,7 +108,7 @@ export default class Options extends Component {
                     {this.state.blockedUrlList.map(rule =>
                         <li>
                             <p>{rule.condition.urlFilter}</p>
-                            <p>Time since URL has been blocked: {this.timeSinceUrlWasBlocked(rule.id)}ms ({this.timeSinceUrlWasBlocked(rule.id) / 1000}s)</p>
+                            <p>Time since URL has been blocked: {this.renderTimeSinceUrlWasBlocked(rule.id)}</p>
                             <button onClick={this.unblockUrl.bind(this, rule.id)}>Remove</button>
                         </li>
                     )}
@@ -117,7 +117,17 @@ export default class Options extends Component {
         );
     }
 
-    timeSinceUrlWasBlocked(ruleId) {
+    renderTimeSinceUrlWasBlocked(ruleId) {
+        var timeDifference = this.calcuateTimeSinceUrlWasBlocked(ruleId);
+        var numDays = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+        var numHours = Math.floor(timeDifference / (1000 * 60 * 60)) % 24;
+        var numMinutes = Math.floor(timeDifference / (1000 * 60)) % 60;
+        var numSeconds = Math.floor(timeDifference / (1000)) % 60;
+        var timeString = numDays + " days " + numHours + " hours " + numMinutes + " mins " + numSeconds + " secs";
+        return timeString;
+    }
+
+    calcuateTimeSinceUrlWasBlocked(ruleId) {
         var timeNow = new Date().getTime();
         var timeOfBlocking = this.loadTimeOfBlockingFromLocalStorage(ruleId);
         var timeDifference = timeNow - timeOfBlocking;
