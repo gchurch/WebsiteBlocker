@@ -38,7 +38,6 @@
     }
   ],
   "permissions": [
-    "declarativeNetRequest",
-    "declarativeNetRequestFeedback"
+    "declarativeNetRequest"
   ]
 }
