@@ -10,6 +10,7 @@ export default class Options extends Component {
 
         this.blockUrl = this.blockUrl.bind(this);
         this.unblockUrl = this.unblockUrl.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     componentDidMount() {
@@ -38,10 +39,17 @@ export default class Options extends Component {
     renderForm() {
         return (
             <div>
-                Url to add to block list: <input id="urlToBlock" type="text"></input>
-                <button onClick={this.blockUrl}>Add</button>
+                <form onSubmit={this.handleSubmit}>
+                    Url to add to block list: <input id="urlToBlock" type="text"></input>
+                    <button type="submit">Add</button>
+                </form>
             </div>
         );
+    }
+
+    handleSubmit(e) {
+        e.preventDefault();
+        this.blockUrl();
     }
 
     blockUrl() {
@@ -57,7 +65,10 @@ export default class Options extends Component {
                     "id": uniqueId,
                     "priority": 1,
                     "action": { "type": "block" },
-                    "condition": { "urlFilter": urlToBlock, "resourceTypes": ["main_frame", "sub_frame", "script"] }
+                    "condition": {
+                        "urlFilter": urlToBlock,
+                        "resourceTypes": ["main_frame", "sub_frame", "stylesheet", "script", "image", "font", "object", "xmlhttprequest", "ping", "csp_report", "media", "websocket", "other"]
+                    }
                 }
             ]
         }
