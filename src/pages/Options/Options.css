@@ -6,3 +6,35 @@
   align-items: center;
   justify-content: center;
 }
+
+body {
+  font-size: 1em;
+  text-align: center;
+}
+
+table {
+  width: 80%;
+  margin: auto;
+  text-align: left;
+  border-collapse: collapse;
+}
+
+tr {
+  border-bottom: 1px solid black;
+}
+
+td, th {
+  border: 1px solid black;
+  width: 33%;
+  padding: 1%;
+  
+}
+
+td:nth-child(3), th:nth-child(3) {
+  text-align: center;
+}
+
+
+button {
+  text-align: center;
+}
