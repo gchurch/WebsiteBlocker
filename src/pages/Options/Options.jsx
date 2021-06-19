@@ -41,7 +41,7 @@ export default class Options extends Component {
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
-                    Url to add to block list: <input id="urlToBlock" type="text"></input>
+                    URL to block: <input id="urlToBlock" type="text"></input>
                     <button type="submit">Add</button>
                 </form>
             </div>
