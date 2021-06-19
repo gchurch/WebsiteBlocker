@@ -14,10 +14,10 @@ export default class Options extends Component {
     }
 
     componentDidMount() {
-        this.updateurlBlockingRules();
+        this.updateUrlBlockingRules();
     }
 
-    updateurlBlockingRules() {
+    updateUrlBlockingRules() {
         chrome.declarativeNetRequest.getDynamicRules(
             (rules) => {
                 console.log(rules);
@@ -62,14 +62,19 @@ export default class Options extends Component {
         var updateRuleOptions = this.createUpdateRuleOptionsToBlockUrl(urlToBlock, uniqueId);
 
         chrome.declarativeNetRequest.updateDynamicRules(updateRuleOptions, () => {
-            this.updateurlBlockingRules();
+            this.updateUrlBlockingRules();
             this.saveTimeOfBlockingToLocalStorage(uniqueId);
         });
     }
 
-    saveTimeOfBlockingToLocalStorage(ruleId) {
-        var timeNow = new Date().getTime();
-        localStorage.setItem(ruleId, timeNow);
+    createUniqueIdForRule() {
+        var uniqueId = 1;
+        for (var i = 0; i < this.state.urlBlockingRules.length; i++) {
+            if (uniqueId <= this.state.urlBlockingRules[i].id) {
+                uniqueId = this.state.urlBlockingRules[i].id + 1;
+            }
+        }
+        return uniqueId;
     }
 
     createUpdateRuleOptionsToBlockUrl(urlToBlock, uniqueId) {
@@ -90,14 +95,9 @@ export default class Options extends Component {
         return updateRuleOptions;
     }
 
-    createUniqueIdForRule() {
-        var uniqueId = 1;
-        for (var i = 0; i < this.state.urlBlockingRules.length; i++) {
-            if (uniqueId <= this.state.urlBlockingRules[i].id) {
-                uniqueId = this.state.urlBlockingRules[i].id + 1;
-            }
-        }
-        return uniqueId;
+    saveTimeOfBlockingToLocalStorage(ruleId) {
+        var timeNow = new Date().getTime();
+        localStorage.setItem(ruleId, timeNow);
     }
 
     renderBlockedUrlsList() {
@@ -148,7 +148,7 @@ export default class Options extends Component {
         }
 
         chrome.declarativeNetRequest.updateDynamicRules(updateRuleOptions, () => {
-            this.updateurlBlockingRules();
+            this.updateUrlBlockingRules();
         });
     }
 }
