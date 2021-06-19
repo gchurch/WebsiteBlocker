@@ -6,7 +6,7 @@ export default class Options extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { blockedUrlList: [] }
+        this.state = { urlBlockingRules: [] }
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.blockUrl = this.blockUrl.bind(this);
@@ -14,14 +14,14 @@ export default class Options extends Component {
     }
 
     componentDidMount() {
-        this.updateBlockedUrlList();
+        this.updateurlBlockingRules();
     }
 
-    updateBlockedUrlList() {
+    updateurlBlockingRules() {
         chrome.declarativeNetRequest.getDynamicRules(
             (rules) => {
                 console.log(rules);
-                this.setState({ blockedUrlList: rules });
+                this.setState({ urlBlockingRules: rules });
             }
         );
     }
@@ -62,7 +62,7 @@ export default class Options extends Component {
         var updateRuleOptions = this.createUpdateRuleOptionsToBlockUrl(urlToBlock, uniqueId);
 
         chrome.declarativeNetRequest.updateDynamicRules(updateRuleOptions, () => {
-            this.updateBlockedUrlList();
+            this.updateurlBlockingRules();
             this.saveTimeOfBlockingToLocalStorage(uniqueId);
         });
     }
@@ -92,9 +92,9 @@ export default class Options extends Component {
 
     createUniqueIdForRule() {
         var uniqueId = 1;
-        for (var i = 0; i < this.state.blockedUrlList.length; i++) {
-            if (uniqueId <= this.state.blockedUrlList[i].id) {
-                uniqueId = this.state.blockedUrlList[i].id + 1;
+        for (var i = 0; i < this.state.urlBlockingRules.length; i++) {
+            if (uniqueId <= this.state.urlBlockingRules[i].id) {
+                uniqueId = this.state.urlBlockingRules[i].id + 1;
             }
         }
         return uniqueId;
@@ -105,7 +105,7 @@ export default class Options extends Component {
             <div>
                 <h3>Currently blocked URLs:</h3>
                 <ul>
-                    {this.state.blockedUrlList.map(rule =>
+                    {this.state.urlBlockingRules.map(rule =>
                         <li>
                             <p>{rule.condition.urlFilter}</p>
                             <p>Time since URL has been blocked: {this.renderTimeSinceUrlWasBlocked(rule.id)}</p>
@@ -148,7 +148,7 @@ export default class Options extends Component {
         }
 
         chrome.declarativeNetRequest.updateDynamicRules(updateRuleOptions, () => {
-            this.updateBlockedUrlList();
+            this.updateurlBlockingRules();
         });
     }
 }
