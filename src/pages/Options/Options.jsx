@@ -50,14 +50,18 @@ export default class Options extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        this.blockUrl();
+        var urlToBlock = this.getUrlFromTextField();
+        this.blockUrl(urlToBlock);
+        this.clearTextField();
     }
 
-    blockUrl() {
+    getUrlFromTextField() {
         var inputElement = document.getElementById("urlToBlock");
         var urlToBlock = inputElement.value;
-        console.log("URL to block: " + urlToBlock);
+        return urlToBlock;
+    }
 
+    blockUrl(urlToBlock) {
         var uniqueId = this.createUniqueIdForRule();
         var updateRuleOptions = this.createUpdateRuleOptionsToBlockUrl(urlToBlock, uniqueId);
 
@@ -65,6 +69,11 @@ export default class Options extends Component {
             this.updateUrlBlockingRules();
             this.saveTimeOfBlockingToLocalStorage(uniqueId);
         });
+    }
+
+    clearTextField() {
+        var inputElement = document.getElementById("urlToBlock");
+        inputElement.value = "";
     }
 
     createUniqueIdForRule() {
