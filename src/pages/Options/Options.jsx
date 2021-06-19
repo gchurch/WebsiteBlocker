@@ -29,8 +29,8 @@ export default class Options extends Component {
     render() {
         return (
             <div>
+                <p>Options Page</p>
                 <h1>Website Blocker</h1>
-                <h2>Options Page</h2>
                 {this.renderFormToBlockUrl()}
                 {this.renderBlockedUrlsList()}
             </div>
@@ -116,7 +116,7 @@ export default class Options extends Component {
                 <table>
                     <tr>
                         <th>URL</th>
-                        <th>Time since being blocked</th>
+                        <th>Time since blocked</th>
                         <th>Remove</th>
                     </tr>
                     {this.state.urlBlockingRules.map(rule =>
