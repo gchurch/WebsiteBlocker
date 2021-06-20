@@ -13,3 +13,11 @@ This Chrome extension was created using React with help from this template: http
   - Check Developer mode
   - Click on Load unpacked extension
   - Select the build folder.
+
+## Images
+
+![popup](demonstration_images/popup.png)
+
+![options](demonstration_images/options.png)
+
+![blocked](demonstration_images/blocked.png)
