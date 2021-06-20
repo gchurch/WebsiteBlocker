@@ -4,7 +4,7 @@ I created this Chrome extension because I regularly find myself getting distract
 
 The pages for this Chrome extension were created using React. The following template was used: https://github.com/lxieyang/chrome-extension-boilerplate-react.
 
-The minimum permission of to 'Block content on any page you visit' is required for this extension. This extension has no additional site access.
+The minimum permission of 'Block content on any page you visit' is required for this extension. This extension has no additional site access.
 
 ## Steps to run
 
