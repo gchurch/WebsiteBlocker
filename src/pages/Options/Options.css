@@ -38,3 +38,7 @@ td:nth-child(3), th:nth-child(3) {
 button {
   text-align: center;
 }
+
+table button {
+  font-size: 1.5em;
+}

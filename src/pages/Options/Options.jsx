@@ -113,18 +113,20 @@ export default class Options extends Component {
             <div>
                 <h3>Currently blocked URLs:</h3>
                 <table>
-                    <tr>
-                        <th>URL</th>
-                        <th>Time since blocked</th>
-                        <th>Remove</th>
-                    </tr>
-                    {this.state.urlBlockingRules.map(rule =>
+                    <tbody>
                         <tr>
-                            <td>{rule.condition.urlFilter}</td>
-                            <td>{this.renderTimeSinceUrlWasBlocked(rule.id)}</td>
-                            <td><button onClick={this.unblockUrl.bind(this, rule.id)}>Remove</button></td>
+                            <th>URL</th>
+                            <th>Time since blocked</th>
+                            <th>Remove</th>
                         </tr>
-                    )}
+                        {this.state.urlBlockingRules.map(rule =>
+                            <tr>
+                                <td>{rule.condition.urlFilter}</td>
+                                <td>{this.renderTimeSinceUrlWasBlocked(rule.id)}</td>
+                                <td><button onClick={this.unblockUrl.bind(this, rule.id)}><i className="fa fa-trash-o"></i></button></td>
+                            </tr>
+                        )}
+                    </tbody>
                 </table>
             </div>
         );
