@@ -120,7 +120,7 @@ export default class Options extends Component {
                             <th>Remove</th>
                         </tr>
                         {this.state.urlBlockingRules.map(rule =>
-                            <tr>
+                            <tr key={rule.id}>
                                 <td>{rule.condition.urlFilter}</td>
                                 <td>{this.renderTimeSinceUrlWasBlocked(rule.id)}</td>
                                 <td><button onClick={this.unblockUrl.bind(this, rule.id)}><i className="fa fa-trash-o"></i></button></td>
