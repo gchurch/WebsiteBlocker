@@ -9,17 +9,17 @@
   "options_page": "options.html",
   "action": {
     "default_popup": "popup.html",
-    "default_icon": "new_icon-34.png"
+    "default_icon": "icon-34.png"
   },
   "icons": {
-    "128": "new_icon-128.png"
+    "128": "icon-128.png"
   },
   "web_accessible_resources": [
     {
       "resources": [
         "content.styles.css",
-        "new_icon-128.png",
-        "new_icon-34.png"
+        "icon-128.png",
+        "icon-34.png"
       ],
       "matches": []
     }

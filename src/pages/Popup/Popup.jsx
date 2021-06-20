@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from '../../assets/img/logo.svg';
 import './Popup.css';
 
 export default class Popup extends Component {
