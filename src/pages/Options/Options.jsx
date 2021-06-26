@@ -137,8 +137,7 @@ export default class Options extends Component {
         var numDays = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
         var numHours = Math.floor(timeDifference / (1000 * 60 * 60)) % 24;
         var numMinutes = Math.floor(timeDifference / (1000 * 60)) % 60;
-        var numSeconds = Math.floor(timeDifference / (1000)) % 60;
-        var timeString = numDays + " day(s) " + numHours + " hour(s) " + numMinutes + " min(s) " + numSeconds + " sec(s)";
+        var timeString = numDays + " day(s) " + numHours + " hour(s) " + numMinutes + " min(s)";
         return timeString;
     }
 
