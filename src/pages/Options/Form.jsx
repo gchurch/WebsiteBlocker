@@ -14,7 +14,7 @@ export default class Form extends Component {
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
-                    URL to block: <input id="urlToBlock" type="text"></input>
+                    URL to block: <input id="urlToBlock" type="text" required></input>
                     <button type="submit">Add</button>
                 </form>
             </div>
