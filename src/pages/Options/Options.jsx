@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import './Options.css';
 import Rule from './Rule';
+import Form from './Form';
 
 export default class Options extends Component {
 
@@ -9,7 +10,6 @@ export default class Options extends Component {
         super(props);
         this.state = { urlBlockingRules: [] }
 
-        this.handleSubmit = this.handleSubmit.bind(this);
         this.blockUrl = this.blockUrl.bind(this);
         this.unblockUrl = this.unblockUrl.bind(this);
     }
@@ -31,34 +31,10 @@ export default class Options extends Component {
         return (
             <div>
                 <h1>Website Blocker</h1>
-                {this.renderFormToBlockUrl()}
+                <Form onAddingUrl={this.blockUrl.bind(this)} />
                 {this.renderBlockedUrlsList()}
             </div>
         );
-    }
-
-    renderFormToBlockUrl() {
-        return (
-            <div>
-                <form onSubmit={this.handleSubmit}>
-                    URL to block: <input id="urlToBlock" type="text"></input>
-                    <button type="submit">Add</button>
-                </form>
-            </div>
-        );
-    }
-
-    handleSubmit(e) {
-        e.preventDefault();
-        var urlToBlock = this.getUrlFromTextField();
-        this.blockUrl(urlToBlock);
-        this.clearTextField();
-    }
-
-    getUrlFromTextField() {
-        var inputElement = document.getElementById("urlToBlock");
-        var urlToBlock = inputElement.value;
-        return urlToBlock;
     }
 
     blockUrl(urlToBlock) {
@@ -69,11 +45,6 @@ export default class Options extends Component {
             this.updateUrlBlockingRules();
             this.saveTimeOfBlockingToLocalStorage(uniqueId);
         });
-    }
-
-    clearTextField() {
-        var inputElement = document.getElementById("urlToBlock");
-        inputElement.value = "";
     }
 
     createUniqueIdForRule() {
