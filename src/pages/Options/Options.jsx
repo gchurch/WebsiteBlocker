@@ -1,6 +1,7 @@
 /*global chrome*/
 import React, { Component } from 'react';
 import './Options.css';
+import Rule from './Rule';
 
 export default class Options extends Component {
 
@@ -120,11 +121,7 @@ export default class Options extends Component {
                             <th>Remove</th>
                         </tr>
                         {this.state.urlBlockingRules.map(rule =>
-                            <tr key={rule.id}>
-                                <td>{rule.condition.urlFilter}</td>
-                                <td>{this.renderTimeSinceUrlWasBlocked(rule.id)}</td>
-                                <td><button onClick={this.unblockUrl.bind(this, rule.id)}><i className="fa fa-trash-o"></i></button></td>
-                            </tr>
+                            <Rule key={rule.id} ruleId={rule.id} urlFilter={rule.condition.urlFilter} onButtonClick={this.unblockUrl.bind(this, rule.id)} />
                         )}
                     </tbody>
                 </table>
@@ -132,32 +129,11 @@ export default class Options extends Component {
         );
     }
 
-    renderTimeSinceUrlWasBlocked(ruleId) {
-        var timeDifference = this.calcuateTimeSinceUrlWasBlocked(ruleId);
-        var numDays = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-        var numHours = Math.floor(timeDifference / (1000 * 60 * 60)) % 24;
-        var numMinutes = Math.floor(timeDifference / (1000 * 60)) % 60;
-        var timeString = numDays + " day(s) " + numHours + " hour(s) " + numMinutes + " min(s)";
-        return timeString;
-    }
-
-    calcuateTimeSinceUrlWasBlocked(ruleId) {
-        var timeNow = new Date().getTime();
-        var timeOfBlocking = this.loadTimeOfBlockingFromLocalStorage(ruleId);
-        var timeDifference = timeNow - timeOfBlocking;
-        return timeDifference;
-    }
-
-    loadTimeOfBlockingFromLocalStorage(ruleId) {
-        var timeOfBlocking = localStorage.getItem(ruleId);
-        return timeOfBlocking;
-    }
-
-    unblockUrl(id) {
-        console.log("unblocking rule with id: " + id);
+    unblockUrl(ruleId) {
+        console.log("unblocking rule with id: " + ruleId);
 
         var updateRuleOptions = {
-            removeRuleIds: [id],
+            removeRuleIds: [ruleId],
             addRules: []
         }
 
