@@ -14,7 +14,7 @@ export default class Form extends Component {
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
-                    URL to block: <input id="urlToBlock2" type="text"></input>
+                    URL to block: <input id="urlToBlock" type="text"></input>
                     <button type="submit">Add</button>
                 </form>
             </div>
@@ -29,13 +29,13 @@ export default class Form extends Component {
     }
 
     getUrlFromTextField() {
-        var inputElement = document.getElementById("urlToBlock2");
+        var inputElement = document.getElementById("urlToBlock");
         var urlToBlock = inputElement.value;
         return urlToBlock;
     }
 
     clearTextField() {
-        var inputElement = document.getElementById("urlToBlock2");
+        var inputElement = document.getElementById("urlToBlock");
         inputElement.value = "";
     }
 }
