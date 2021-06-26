@@ -6,6 +6,20 @@ export default class Rule extends Component {
 
     constructor(props) {
         super(props);
+        this.state = {
+            timeSinceBlocking: 0
+        }
+    }
+
+    componentDidMount() {
+        this.calculateTimeSinceUrlWasBlocked();
+        this.regularlyUpdateTimeSinceBlocked();
+    }
+
+    regularlyUpdateTimeSinceBlocked() {
+        setInterval(() => {
+            this.calculateTimeSinceUrlWasBlocked();
+        }, 60000);
     }
 
     render() {
@@ -19,7 +33,7 @@ export default class Rule extends Component {
     }
 
     renderTimeSinceUrlWasBlocked() {
-        var timeDifference = this.calcuateTimeSinceUrlWasBlocked(this.props.ruleId);
+        var timeDifference = this.state.timeSinceBlocking;
         var numDays = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
         var numHours = Math.floor(timeDifference / (1000 * 60 * 60)) % 24;
         var numMinutes = Math.floor(timeDifference / (1000 * 60)) % 60;
@@ -27,11 +41,11 @@ export default class Rule extends Component {
         return timeString;
     }
 
-    calcuateTimeSinceUrlWasBlocked() {
+    calculateTimeSinceUrlWasBlocked() {
         var timeNow = new Date().getTime();
         var timeOfBlocking = this.loadTimeOfBlockingFromLocalStorage(this.props.ruleId);
         var timeDifference = timeNow - timeOfBlocking;
-        return timeDifference;
+        this.setState({ timeSinceBlocking: timeDifference });
     }
 
     loadTimeOfBlockingFromLocalStorage() {
