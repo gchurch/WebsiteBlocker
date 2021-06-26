@@ -87,7 +87,7 @@ export default class Options extends Component {
                 <table>
                     <tbody>
                         <tr>
-                            <th>URL</th>
+                            <th>URL Filter</th>
                             <th>Time since blocked</th>
                             <th>Remove</th>
                         </tr>
