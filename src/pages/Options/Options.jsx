@@ -21,8 +21,8 @@ export default class Options extends Component {
     updateUrlBlockingRules() {
         chrome.declarativeNetRequest.getDynamicRules(
             (rules) => {
-                console.log(rules);
                 this.setState({ urlBlockingRules: rules });
+                console.log("Updated blocking rules.");
             }
         );
     }
@@ -101,7 +101,6 @@ export default class Options extends Component {
     }
 
     unblockUrl(ruleId) {
-        console.log("unblocking rule with id: " + ruleId);
 
         var updateRuleOptions = {
             removeRuleIds: [ruleId],
