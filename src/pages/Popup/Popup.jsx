@@ -6,8 +6,7 @@ export default class Popup extends Component {
     return (
       <div>
         <h1>Website Blocker</h1>
-        <p>Click the button below to go to the options page.</p>
-        <button onClick={this.openOptions}>Options</button>
+        <button onClick={this.openOptions}>Settings</button>
       </div>
     );
   }
