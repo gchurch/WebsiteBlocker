@@ -22,3 +22,4 @@ secrets.*.js
 
 *.crx
 *.pem
+*.zip
