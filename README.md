@@ -1,6 +1,6 @@
 # Website Blocker
 
-I created this Chrome extension because I regularly find myself getting distracted by social media websites. This extension allows you to create a list of blocked websites which the browser is blocked from visiting. The time that has passed since you blocked a specific website is also shown. This was added as an extra motivating factor to prevent you from just unblocking the website again. How many days can you keep the website blocked for!?
+I created this Chrome extension because I regularly find myself getting distracted by social media websites. This extension allows you to create a list of blocked websites which the browser is blocked from visiting. The time that has passed since you blocked a specific website is also shown. This was added as an extra motivating factor to prevent you from just unblocking the website again. You can challenge yourself to see how long you can keep the website blocked for.
 
 The pages for this Chrome extension were created using React. The extension uses Manifest V3. The following template was used to create the extension: https://github.com/lxieyang/chrome-extension-boilerplate-react.
 
