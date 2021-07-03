@@ -15,10 +15,10 @@ export default class Options extends Component {
     }
 
     componentDidMount() {
-        this.updateUrlBlockingRules();
+        this.updateUrlBlockingRulesInState();
     }
 
-    updateUrlBlockingRules() {
+    updateUrlBlockingRulesInState() {
         chrome.declarativeNetRequest.getDynamicRules(
             (rules) => {
                 this.setState({ urlBlockingRules: rules });
@@ -37,12 +37,14 @@ export default class Options extends Component {
         );
     }
 
-    blockUrl(urlToBlock) {
+    blockUrl(blockingInfo) {
         var uniqueId = this.createUniqueIdForRule();
-        var updateRuleOptions = this.createUpdateRuleOptionsToBlockUrl(urlToBlock, uniqueId);
+        var updateRuleOptions = this.createUpdateRuleOptionsToBlockUrl(blockingInfo.url, uniqueId);
+
+        console.log(blockingInfo);
 
         chrome.declarativeNetRequest.updateDynamicRules(updateRuleOptions, () => {
-            this.updateUrlBlockingRules();
+            this.updateUrlBlockingRulesInState();
             this.saveTimeOfBlockingToLocalStorage(uniqueId);
         });
     }
@@ -108,7 +110,7 @@ export default class Options extends Component {
         }
 
         chrome.declarativeNetRequest.updateDynamicRules(updateRuleOptions, () => {
-            this.updateUrlBlockingRules();
+            this.updateUrlBlockingRulesInState();
         });
     }
 }

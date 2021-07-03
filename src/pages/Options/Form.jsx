@@ -10,12 +10,25 @@ export default class Form extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    componentDidMount() {
+        this.clearFromTimeInput();
+        this.clearToTimeInput();
+    }
+
     render() {
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
-                    URL to block: <input id="urlToBlock" type="text" placeholder="example.com" required pattern=".+[.].+"></input>
-                    <button type="submit">Add</button>
+                    <div>
+                        URL to block: <input id="urlToBlock" type="text" placeholder="example.com" required pattern=".+[.].+"></input>
+                    </div>
+                    <div>
+                        From <input id="fromTime" type="time"></input>
+                        To <input id="toTime" type="time"></input>
+                    </div>
+                    <div>
+                        <button type="submit">Add</button>
+                    </div>
                 </form>
             </div>
         );
@@ -24,8 +37,17 @@ export default class Form extends Component {
     handleSubmit(e) {
         e.preventDefault();
         var urlToBlock = this.getUrlFromTextField();
-        this.props.onAddingUrl(urlToBlock);
+        var fromTime = this.getFromTimeFromInput();
+        var toTime = this.getToTimeFromInput();
+        var blockingInfo = {
+            url: urlToBlock,
+            fromTime: fromTime,
+            toTime: toTime,
+        };
+        this.props.onAddingUrl(blockingInfo);
         this.clearTextField();
+        this.clearFromTimeInput();
+        this.clearToTimeInput();
     }
 
     getUrlFromTextField() {
@@ -34,8 +56,30 @@ export default class Form extends Component {
         return urlToBlock;
     }
 
+    getFromTimeFromInput() {
+        var inputElement = document.getElementById("fromTime");
+        var fromTime = inputElement.value;
+        return fromTime;
+    }
+
+    getToTimeFromInput() {
+        var inputElement = document.getElementById("toTime");
+        var toTime = inputElement.value;
+        return toTime;
+    }
+
     clearTextField() {
         var inputElement = document.getElementById("urlToBlock");
         inputElement.value = "";
+    }
+
+    clearFromTimeInput() {
+        var inputElement = document.getElementById("fromTime");
+        inputElement.value = "00:00";
+    }
+
+    clearToTimeInput() {
+        var inputElement = document.getElementById("toTime");
+        inputElement.value = "00:00";
     }
 }
