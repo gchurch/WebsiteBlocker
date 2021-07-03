@@ -1,6 +1,6 @@
 /*global chrome*/
 import React, { Component } from 'react';
-import './Options.css';
+import './css/Options.css';
 import Rule from './Rule';
 import Form from './Form';
 

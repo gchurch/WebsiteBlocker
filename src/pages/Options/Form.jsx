@@ -1,6 +1,6 @@
 /*global chrome*/
 import React, { Component } from 'react';
-import './Options.css';
+import './css/Form.css';
 
 export default class Form extends Component {
 

@@ -1,6 +1,6 @@
 /*global chrome*/
 import React, { Component } from 'react';
-import './Options.css';
+import './css/Rule.css';
 
 export default class Rule extends Component {
 
