@@ -45,7 +45,7 @@ export default class Options extends Component {
 
         chrome.declarativeNetRequest.updateDynamicRules(updateRuleOptions, () => {
             this.updateUrlBlockingRulesInState();
-            this.saveTimeOfBlockingToLocalStorage(uniqueId);
+            this.saveBlockingInfoToLocalStorage(uniqueId, blockingInfo);
         });
     }
 
@@ -77,9 +77,11 @@ export default class Options extends Component {
         return updateRuleOptions;
     }
 
-    saveTimeOfBlockingToLocalStorage(ruleId) {
+    saveBlockingInfoToLocalStorage(ruleId, blockingInfo) {
         var timeNow = new Date().getTime();
-        localStorage.setItem(ruleId, timeNow);
+        blockingInfo.timeOfBlocking = timeNow;
+        var stringifiedObject = JSON.stringify(blockingInfo);
+        localStorage.setItem(ruleId, stringifiedObject);
     }
 
     renderBlockedUrlsList() {

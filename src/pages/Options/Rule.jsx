@@ -49,8 +49,13 @@ export default class Rule extends Component {
     }
 
     loadTimeOfBlockingFromLocalStorage() {
-        var timeOfBlocking = localStorage.getItem(this.props.ruleId);
-        return timeOfBlocking;
+        var stringifiedObject = localStorage.getItem(this.props.ruleId);
+        console.log(stringifiedObject);
+        var blockingInfo = JSON.parse(stringifiedObject);
+        if (blockingInfo) {
+            return blockingInfo.timeOfBlocking;
+        }
+        else return NaN;
     }
 
 }
