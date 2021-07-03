@@ -26,6 +26,7 @@ export default class Rule extends Component {
         return (
             <tr>
                 <td>{this.props.urlFilter}</td>
+                <td>{this.renderTimeFromTo()}</td>
                 <td>{this.renderTimeSinceUrlWasBlocked()}</td>
                 <td><button onClick={() => this.props.onButtonClick()}><i className="fa fa-trash-o"></i></button></td>
             </tr>
@@ -49,13 +50,24 @@ export default class Rule extends Component {
     }
 
     loadTimeOfBlockingFromLocalStorage() {
-        var stringifiedObject = localStorage.getItem(this.props.ruleId);
-        console.log(stringifiedObject);
-        var blockingInfo = JSON.parse(stringifiedObject);
-        if (blockingInfo) {
-            return blockingInfo.timeOfBlocking;
-        }
-        else return NaN;
+        var blockingInfo = this.loadBlockingInfoFromLocalStorage();
+        return blockingInfo.timeOfBlocking;
     }
 
+    loadBlockingInfoFromLocalStorage() {
+        var blockingInfo = JSON.parse(localStorage.getItem(this.props.ruleId));
+        if (!blockingInfo) {
+            return {
+                timeOfBlocking: NaN,
+                fromTime: "00:00",
+                toTime: "00:00"
+            }
+        }
+        return blockingInfo;
+    }
+
+    renderTimeFromTo() {
+        var blockingInfo = this.loadBlockingInfoFromLocalStorage();
+        return blockingInfo.fromTime + " - " + blockingInfo.toTime;
+    }
 }

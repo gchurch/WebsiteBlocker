@@ -21,14 +21,10 @@ table {
 
 td, th {
   border: 1px solid black;
-  width: 33%;
+  width: 25%;
   padding: 1%;
-}
-
-td:nth-child(3), th:nth-child(3) {
   text-align: center;
 }
-
 
 button {
   text-align: center;

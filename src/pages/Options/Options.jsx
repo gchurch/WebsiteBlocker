@@ -92,7 +92,8 @@ export default class Options extends Component {
                     <tbody>
                         <tr>
                             <th>URL</th>
-                            <th>Time since blocked</th>
+                            <th>Blocking Time</th>
+                            <th>Time since added</th>
                             <th>Remove</th>
                         </tr>
                         {this.state.urlBlockingRules.map(rule =>
