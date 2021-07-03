@@ -19,15 +19,10 @@ table {
   border-collapse: collapse;
 }
 
-tr {
-  border-bottom: 1px solid black;
-}
-
 td, th {
   border: 1px solid black;
   width: 33%;
   padding: 1%;
-  
 }
 
 td:nth-child(3), th:nth-child(3) {
