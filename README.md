@@ -18,8 +18,8 @@ The only permission required for this extension is being able to 'Block content 
 
 ## Images
 
-![popup](demonstration_images/popup.png)
+![popup](screenshots/popup.png)
 
-![options](demonstration_images/options.png)
+![options](screenshots/options.png)
 
-![blocked](demonstration_images/blocked.png)
+![blocked](screenshots/blocked.png)
