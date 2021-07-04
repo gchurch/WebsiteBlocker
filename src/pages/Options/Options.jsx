@@ -101,12 +101,11 @@ export default class Options extends Component {
     }
 
     unblockUrl(ruleId) {
-
+        confirm("Are you sure you want to unblock this website?");
         var updateRuleOptions = {
             removeRuleIds: [ruleId],
             addRules: []
         }
-
         chrome.declarativeNetRequest.updateDynamicRules(updateRuleOptions, () => {
             this.updateUrlBlockingRules();
         });
