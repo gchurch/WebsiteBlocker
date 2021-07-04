@@ -92,7 +92,7 @@ export default class Options extends Component {
                             <th>Remove</th>
                         </tr>
                         {this.state.urlBlockingRules.map(rule =>
-                            <Rule key={rule.id} ruleId={rule.id} urlFilter={rule.condition.urlFilter} onButtonClick={this.unblockUrl.bind(this, rule.id)} />
+                            <Rule key={rule.id} rule={rule} onButtonClick={this.unblockUrl.bind(this, rule)} />
                         )}
                     </tbody>
                 </table>
@@ -100,11 +100,11 @@ export default class Options extends Component {
         );
     }
 
-    unblockUrl(ruleId) {
-        var confirmation = confirm("Are you sure you want to unblock this website?");
+    unblockUrl(rule) {
+        var confirmation = confirm("Are you sure you want to unblock " + rule.condition.urlFilter + " ?");
         if (confirmation == true) {
             var updateRuleOptions = {
-                removeRuleIds: [ruleId],
+                removeRuleIds: [rule.id],
                 addRules: []
             }
             chrome.declarativeNetRequest.updateDynamicRules(updateRuleOptions, () => {

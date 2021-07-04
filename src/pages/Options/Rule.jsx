@@ -25,7 +25,7 @@ export default class Rule extends Component {
     render() {
         return (
             <tr>
-                <td>{this.props.urlFilter}</td>
+                <td>{this.props.rule.condition.urlFilter}</td>
                 <td>{this.renderTimeSinceUrlWasBlocked()}</td>
                 <td><button onClick={() => this.props.onButtonClick()}><i className="fa fa-trash-o"></i></button></td>
             </tr>
@@ -43,13 +43,13 @@ export default class Rule extends Component {
 
     calculateTimeSinceUrlWasBlocked() {
         var timeNow = new Date().getTime();
-        var timeOfBlocking = this.loadTimeOfBlockingFromLocalStorage(this.props.ruleId);
+        var timeOfBlocking = this.loadTimeOfBlockingFromLocalStorage(this.props.rule.id);
         var timeDifference = timeNow - timeOfBlocking;
         this.setState({ timeSinceBlocking: timeDifference });
     }
 
     loadTimeOfBlockingFromLocalStorage() {
-        var timeOfBlocking = localStorage.getItem(this.props.ruleId);
+        var timeOfBlocking = localStorage.getItem(this.props.rule.id);
         return timeOfBlocking;
     }
 
