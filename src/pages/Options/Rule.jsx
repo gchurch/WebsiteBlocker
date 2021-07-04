@@ -9,6 +9,7 @@ export default class Rule extends Component {
         this.state = {
             timeSinceBlocking: 0
         }
+        this.timeUpdateInterval = null;
     }
 
     componentDidMount() {
@@ -17,7 +18,7 @@ export default class Rule extends Component {
     }
 
     regularlyUpdateTimeSinceBlocked() {
-        setInterval(() => {
+        this.timeUpdateInterval = setInterval(() => {
             this.calculateTimeSinceUrlWasBlocked();
         }, 60000);
     }
@@ -53,4 +54,9 @@ export default class Rule extends Component {
         return timeOfBlocking;
     }
 
+    componentWillUnmount() {
+        if (this.timeUpdateInterval) {
+            clearInterval(this.timeUpdateInterval);
+        }
+    }
 }
