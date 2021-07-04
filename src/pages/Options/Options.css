@@ -17,18 +17,22 @@ table {
   margin: auto;
   text-align: left;
   border-collapse: collapse;
-}
-
-tr {
-  border-bottom: 1px solid black;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 td, th {
-  border: 1px solid black;
+  border: 1px solid #ddd;
   width: 33%;
-  padding: 1%;
-  
+  padding: 0.5%;
 }
+
+th {
+  padding-top: 1%;
+  padding-bottom: 1%;
+  background-color: rgb(255, 181, 181);
+}
+
+tr:nth-child(even){background-color: #f2f2f2;}
 
 td:nth-child(3), th:nth-child(3) {
   text-align: center;
