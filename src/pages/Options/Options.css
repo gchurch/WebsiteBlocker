@@ -46,3 +46,11 @@ button {
 table button {
   font-size: 1.5em;
 }
+
+.checked {
+  color: orange;
+}
+
+#rating {
+  margin: 3%;
+}

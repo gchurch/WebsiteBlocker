@@ -33,6 +33,7 @@ export default class Options extends Component {
                 <h1>Website Blocker</h1>
                 <Form onAddingUrl={this.blockUrl.bind(this)} />
                 {this.renderBlockedUrlsList()}
+                {this.renderRating()}
             </div>
         );
     }
@@ -111,5 +112,13 @@ export default class Options extends Component {
                 this.updateUrlBlockingRules();
             });
         }
+    }
+
+    renderRating() {
+        return (
+            <div id="rating">
+                <a href="https://chrome.google.com/webstore/category/extensions" target="_blank">Rate Us</a>
+            </div>
+        )
     }
 }
