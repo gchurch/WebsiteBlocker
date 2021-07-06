@@ -33,7 +33,6 @@ export default class Options extends Component {
                 <h1>Website Blocker</h1>
                 <Form onAddingUrl={this.blockUrl.bind(this)} />
                 {this.renderBlockedUrlsList()}
-                {this.renderRating()}
             </div>
         );
     }
