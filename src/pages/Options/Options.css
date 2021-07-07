@@ -51,6 +51,30 @@ table button {
   color: orange;
 }
 
-#rating {
+#ratingDiv {
   margin: 3%;
+}
+
+#ratingLink {
+  padding: 0.5%;
+  background-color: rgb(253, 192, 24);
+  color: black;
+  border-radius: 5px;
+}
+
+#ratingLink:link {
+  text-decoration: none;
+}
+
+#ratingLink:visited {
+  text-decoration: none;
+}
+
+#ratingLink:hover {
+  text-decoration: none;
+  background-color: rgb(240, 181, 18);
+}
+
+#ratingLink:active {
+  text-decoration: none;
 }
