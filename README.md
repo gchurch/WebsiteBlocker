@@ -2,7 +2,7 @@
 
 I created this Chrome extension because I regularly find myself getting distracted by social media websites. This extension allows you to create a list of blocked websites which the browser is blocked from visiting. The time that has passed since you blocked a specific website is also shown. This was added as an extra motivating factor to prevent you from just unblocking the website again. You can challenge yourself to see how long you can keep the site blocked for.
 
-[![chrome web store](images/chrome_web_store_available.png)](https://chrome.google.com/webstore/detail/website-blocker/pohdmcmfjhjnocjjhoobmhbgonebakad)
+[![chrome web store](images/chrome/chrome_web_store_available.png)](https://chrome.google.com/webstore/detail/website-blocker/pohdmcmfjhjnocjjhoobmhbgonebakad)
 
 ## Technical Details
 
