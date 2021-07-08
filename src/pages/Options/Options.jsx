@@ -84,11 +84,11 @@ export default class Options extends Component {
     renderBlockedUrlsList() {
         return (
             <div>
-                <h3>Currently blocked URLs:</h3>
+                <h3>Blocked Websites:</h3>
                 <table>
                     <tbody>
                         <tr>
-                            <th>URL Filter</th>
+                            <th>Website</th>
                             <th>Time since blocked</th>
                             <th>Remove</th>
                         </tr>
