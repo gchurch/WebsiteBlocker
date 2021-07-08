@@ -117,7 +117,7 @@ export default class Options extends Component {
     renderRatingLink() {
         return (
             <div id="ratingDiv">
-                <a id="ratingLink" href="https://chrome.google.com/webstore/detail/website-blocker/pohdmcmfjhjnocjjhoobmhbgonebakad" target="_blank">Rate the extension</a>
+                <a id="ratingLink" href="https://chrome.google.com/webstore/detail/website-blocker/pohdmcmfjhjnocjjhoobmhbgonebakad/reviews" target="_blank">Rate the extension</a>
             </div>
         )
     }
