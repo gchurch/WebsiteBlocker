@@ -110,6 +110,7 @@ export default class Options extends Component {
             }
             chrome.declarativeNetRequest.updateDynamicRules(updateRuleOptions, () => {
                 this.updateUrlBlockingRules();
+                localStorage.removeItem(rule.id);
             });
         }
     }
