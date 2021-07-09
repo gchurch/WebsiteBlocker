@@ -8,7 +8,10 @@ export default class Options extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { urlBlockingRules: [] }
+        this.state = {
+            urlBlockingRules: [],
+            numberOfBlockedWebsites: 0
+        }
 
         this.blockUrl = this.blockUrl.bind(this);
         this.unblockUrl = this.unblockUrl.bind(this);
@@ -17,20 +20,33 @@ export default class Options extends Component {
     }
 
     componentDidMount() {
-        this.updateUrlBlockingRules();
-        this.regularlyUpdateUrlBlockingRules();
+        this.updateBlockingInformation();
+        this.regularlyUpdateBlockingInformation();
     }
 
-    regularlyUpdateUrlBlockingRules() {
+    regularlyUpdateBlockingInformation() {
         this.rulesUpdateInterval = setInterval(() => {
-            this.updateUrlBlockingRules();
+            this.updateBlockingInformation();
         }, 5000);
+    }
+
+    updateBlockingInformation() {
+        this.updateUrlBlockingRules();
+        this.updateNumberOfBlockedWebsites();
     }
 
     updateUrlBlockingRules() {
         chrome.declarativeNetRequest.getDynamicRules(
             (rules) => {
                 this.setState({ urlBlockingRules: rules });
+            }
+        );
+    }
+
+    updateNumberOfBlockedWebsites() {
+        chrome.declarativeNetRequest.getDynamicRules(
+            (rules) => {
+                this.setState({ numberOfBlockedWebsites: rules.length });
             }
         );
     }
@@ -56,7 +72,7 @@ export default class Options extends Component {
         var updateRuleOptions = this.createUpdateRuleOptionsToBlockUrl(urlToBlock, uniqueId);
 
         chrome.declarativeNetRequest.updateDynamicRules(updateRuleOptions, () => {
-            this.updateUrlBlockingRules();
+            this.updateBlockingInformation();
             this.saveTimeOfBlockingToLocalStorage(uniqueId);
         });
     }
@@ -97,7 +113,7 @@ export default class Options extends Component {
     renderBlockedUrlsList() {
         return (
             <div>
-                <h3>Blocked Websites:</h3>
+                <h3>Currently blocking {this.state.numberOfBlockedWebsites} Website(s):</h3>
                 <table>
                     <tbody>
                         <tr>
@@ -122,7 +138,7 @@ export default class Options extends Component {
                 addRules: []
             }
             chrome.declarativeNetRequest.updateDynamicRules(updateRuleOptions, () => {
-                this.updateUrlBlockingRules();
+                this.updateBlockingInformation();
                 localStorage.removeItem(rule.id);
             });
         }
