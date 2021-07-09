@@ -23,7 +23,10 @@ export default class Popup extends Component {
   render() {
     return (
       <div>
-        <h1>Website Blocker</h1>
+        <header>
+          <img src="icon-128.png" />
+          <h1>Website Blocker</h1>
+        </header>
         <p>Currently blocking {this.state.numberOfBlockedWebsites} website(s).</p>
         <button onClick={this.openOptions}>Settings</button>
       </div>

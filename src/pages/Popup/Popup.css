@@ -1,4 +1,23 @@
 body {
   text-align: center;
   font-size: 1em;
+  width: 250px;
+}
+
+header {
+}
+
+header img {
+  height: auto;
+  width: 60px;
+  display: inline;
+  vertical-align: top;
+  margin: none;
+}
+
+header h1 {
+  font-size: 20px;
+  display: inline-block;
+  margin: none;
+  padding: none;
 }
