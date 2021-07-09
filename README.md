@@ -6,7 +6,7 @@ I created this Chrome extension because I regularly find myself getting distract
 
 ## Technical Details
 
-The pages for this Chrome extension were created using React. The extension uses Manifest V3. The following template was used to create the extension: https://github.com/lxieyang/chrome-extension-boilerplate-react.
+The extension uses Manifest V3. The pages for were created using React. The following template was used to create the extension: https://github.com/lxieyang/chrome-extension-boilerplate-react.
 
 The only permission required for this extension is being able to 'Block content on any page you visit'. This is the very minimum of permissions needed for this extension to work. This extension has no additional site access.
 
