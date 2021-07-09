@@ -30,10 +30,15 @@ export default class Options extends Component {
     render() {
         return (
             <div>
-                <h1>Website Blocker</h1>
-                <Form onAddingUrl={this.blockUrl.bind(this)} />
-                {this.renderBlockedUrlsList()}
-                {this.renderRatingLink()}
+                <header>
+                    <img src="icon-128.png" />
+                    <h1>Website Blocker</h1>
+                </header>
+                <main>
+                    <Form onAddingUrl={this.blockUrl.bind(this)} />
+                    {this.renderBlockedUrlsList()}
+                    {this.renderRatingLink()}
+                </main>
             </div>
         );
     }

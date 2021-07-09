@@ -78,3 +78,16 @@ table button {
 #ratingLink:active {
   text-decoration: none;
 }
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: none;
+}
+
+header img {
+  height: 50px;
+  width: 50px;
+  margin-right: 0.5%;
+}
