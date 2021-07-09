@@ -131,7 +131,7 @@ export default class Options extends Component {
     }
 
     unblockUrl(rule) {
-        var confirmation = confirm("Are you sure you want to unblock " + rule.condition.urlFilter + " ?");
+        var confirmation = confirm("Press OK to confirm that you want to unblock " + rule.condition.urlFilter + ".");
         if (confirmation == true) {
             var updateRuleOptions = {
                 removeRuleIds: [rule.id],
