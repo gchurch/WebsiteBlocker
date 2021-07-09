@@ -5,21 +5,18 @@ body {
 }
 
 header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 header img {
-  height: auto;
-  width: 60px;
-  display: inline;
-  vertical-align: top;
-  margin: none;
+  height: 50px;
+  width: 50px;
 }
 
 header h1 {
   font-size: 20px;
-  display: inline-block;
-  margin: none;
-  padding: none;
 }
 
 button {
