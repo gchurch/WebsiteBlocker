@@ -12,17 +12,25 @@ export default class Options extends Component {
 
         this.blockUrl = this.blockUrl.bind(this);
         this.unblockUrl = this.unblockUrl.bind(this);
+
+        this.rulesUpdateInterval = null;
     }
 
     componentDidMount() {
         this.updateUrlBlockingRules();
+        this.regularlyUpdateUrlBlockingRules();
+    }
+
+    regularlyUpdateUrlBlockingRules() {
+        this.rulesUpdateInterval = setInterval(() => {
+            this.updateUrlBlockingRules();
+        }, 5000);
     }
 
     updateUrlBlockingRules() {
         chrome.declarativeNetRequest.getDynamicRules(
             (rules) => {
                 this.setState({ urlBlockingRules: rules });
-                console.log("Updated blocking rules.");
             }
         );
     }
@@ -126,5 +134,11 @@ export default class Options extends Component {
                 <a id="ratingLink" href="https://chrome.google.com/webstore/detail/website-blocker/pohdmcmfjhjnocjjhoobmhbgonebakad/reviews" target="_blank">Leave a rating</a>
             </div>
         )
+    }
+
+    componentWillUnmount() {
+        if (this.timeUpdateInterval) {
+            clearInterval(this.rulesUpdateInterval);
+        }
     }
 }

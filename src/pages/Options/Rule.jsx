@@ -13,14 +13,14 @@ export default class Rule extends Component {
     }
 
     componentDidMount() {
-        this.calculateTimeSinceUrlWasBlocked();
+        this.updateTimeSinceUrlWasBlocked();
         this.regularlyUpdateTimeSinceBlocked();
     }
 
     regularlyUpdateTimeSinceBlocked() {
         this.timeUpdateInterval = setInterval(() => {
-            this.calculateTimeSinceUrlWasBlocked();
-        }, 60000);
+            this.updateTimeSinceUrlWasBlocked();
+        }, 5000);
     }
 
     render() {
@@ -42,7 +42,7 @@ export default class Rule extends Component {
         return timeString;
     }
 
-    calculateTimeSinceUrlWasBlocked() {
+    updateTimeSinceUrlWasBlocked() {
         var timeNow = new Date().getTime();
         var timeOfBlocking = this.loadTimeOfBlockingFromLocalStorage(this.props.rule.id);
         var timeDifference = timeNow - timeOfBlocking;
