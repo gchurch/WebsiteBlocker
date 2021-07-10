@@ -4,7 +4,9 @@
   "description": "Block distracting websites.",
   "version": "1.0",
   "permissions": [
-    "declarativeNetRequest"
+    "declarativeNetRequest",
+    "storage",
+    "alarms"
   ],
   "options_page": "options.html",
   "action": {
