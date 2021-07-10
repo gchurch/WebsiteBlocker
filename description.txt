@@ -1,6 +1,20 @@
-Distracting websites affecting your productivity?
+Why download this browser extension?
 
-Easily block an unlimited number of websites using this free browser extension.
+- Easily block any website
+- Boost your productivity, avoid distractions, stop procrastination and keep focus.
+- Completely free
+- Block as many websites as you want.
+- See how long each website has been blocked for. Challenge yourself to see how long you can go.
+- Uses minimal permissions. The only permission used is 'Block content on any page you visit'. That's it. 
+This means that you can be reassured that your privacy and security is protected.
 
-Click on the extension icon to bring up the popup window and then click the link to go to the settings page.
-From there you can block as many websites as you want.
+
+How to use:
+
+- Click on the extension icon to bring up the popup window
+- In the popup window, click the link to go to the settings page.
+- In the text field, enter the URL of a website that you want to block and then press add.
+- Your browser will then be blocked from visiting that website. This includes embeds.
+- To unblock a website, click on the trash can icon for that website.
+
+If you use this extension, I would very much appreciate it if you would leave a rating :)
