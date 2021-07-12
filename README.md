@@ -2,8 +2,6 @@
 
 This Chrome extension allows you to create a list of websites that the browser is blocked from being able to visit. This helps you to avoid distractions and boost productivity. The time that each website has been blocked for is also displayed. This feature motivates you to keep the website blocked as unblocking the website will reset the timer and it feels like you have lost your progress.
 
-This Chrome extension has been published in the Chrome Web Store.
-
 [![chrome web store](images/chrome/chrome_web_store_available.png)](https://chrome.google.com/webstore/detail/website-blocker/pohdmcmfjhjnocjjhoobmhbgonebakad)
 
 ## Technical Details
