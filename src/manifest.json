@@ -13,8 +13,12 @@
   },
   "options_page": "options.html",
   "permissions": [
-    "declarativeNetRequest"
+    "declarativeNetRequest",
+    "storage"
   ],
+  "background": {
+    "service_worker": "background.bundle.js"
+  },
   "web_accessible_resources": [
     {
       "resources": [
