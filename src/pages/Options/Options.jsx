@@ -73,7 +73,7 @@ export default class Options extends Component {
 
         chrome.declarativeNetRequest.updateDynamicRules(updateRuleOptions, () => {
             this.updateBlockingInformation();
-            this.saveTimeOfBlockingToLocalStorage(uniqueId);
+            this.saveTimeOfBlockingToStorage(uniqueId);
         });
     }
 
@@ -105,9 +105,10 @@ export default class Options extends Component {
         return updateRuleOptions;
     }
 
-    saveTimeOfBlockingToLocalStorage(ruleId) {
+    saveTimeOfBlockingToStorage(ruleId) {
         var timeNow = new Date().getTime();
-        localStorage.setItem(ruleId, timeNow);
+        const key = ruleId.toString();
+        chrome.storage.sync.set({ [key]: timeNow });
     }
 
     renderBlockedUrlsList() {
@@ -139,7 +140,7 @@ export default class Options extends Component {
             }
             chrome.declarativeNetRequest.updateDynamicRules(updateRuleOptions, () => {
                 this.updateBlockingInformation();
-                localStorage.removeItem(rule.id);
+                chrome.storage.sync.remove(rule.id.toString());
             });
         }
     }

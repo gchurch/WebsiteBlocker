@@ -44,14 +44,12 @@ export default class Rule extends Component {
 
     updateTimeSinceUrlWasBlocked() {
         var timeNow = new Date().getTime();
-        var timeOfBlocking = this.loadTimeOfBlockingFromLocalStorage(this.props.rule.id);
-        var timeDifference = timeNow - timeOfBlocking;
-        this.setState({ timeSinceBlocking: timeDifference });
-    }
-
-    loadTimeOfBlockingFromLocalStorage() {
-        var timeOfBlocking = localStorage.getItem(this.props.rule.id);
-        return timeOfBlocking;
+        var key = this.props.rule.id.toString();
+        chrome.storage.sync.get(key, (data) => {
+            var timeOfBlocking = data[key];
+            var timeDifference = timeNow - timeOfBlocking;
+            this.setState({ timeSinceBlocking: timeDifference });
+        });
     }
 
     componentWillUnmount() {
