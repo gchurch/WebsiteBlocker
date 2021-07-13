@@ -1,9 +1,17 @@
 chrome.runtime.onInstalled.addListener(function () {
-    var updateRuleOptions = {
-        removeRuleIds: [],
-        addRules: []
-    }
-    chrome.declarativeNetRequest.updateDynamicRules(updateRuleOptions, () => {
-        console.log("Updated blocking rules with no changes.");
+    chrome.declarativeNetRequest.getDynamicRules((rules) => {
+        console.log("Retrieved existing rules.");
+        var existingRuleIds = [];
+        for (var rule of rules) {
+            existingRuleIds.push(rule.id)
+        }
+        console.log(existingRuleIds);
+        var updateRuleOptions = {
+            removeRuleIds: existingRuleIds,
+            addRules: []
+        }
+        chrome.declarativeNetRequest.updateDynamicRules(updateRuleOptions, () => {
+            console.log("Updated rules.");
+        });
     });
 });
