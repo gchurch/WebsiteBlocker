@@ -23,6 +23,22 @@ export default class Rule extends Component {
         }, 5000);
     }
 
+    updateTimeSinceUrlWasBlocked() {
+        var key = this.props.rule.id.toString();
+        var timeNow = new Date().getTime();
+        chrome.storage.sync.get(key, (data) => {
+            // If there is no time saved for this id then save the current time.
+            if (data[key] == null) {
+                chrome.storage.sync.set({ [key]: timeNow });
+            }
+            else {
+                var timeOfBlocking = data[key];
+                var timeDifference = timeNow - timeOfBlocking;
+                this.setState({ timeSinceBlocking: timeDifference });
+            }
+        });
+    }
+
     render() {
         return (
             <tr>
@@ -40,16 +56,6 @@ export default class Rule extends Component {
         var numMinutes = Math.floor(timeDifference / (1000 * 60)) % 60;
         var timeString = numDays + " day(s) " + numHours + " hour(s) " + numMinutes + " min(s)";
         return timeString;
-    }
-
-    updateTimeSinceUrlWasBlocked() {
-        var timeNow = new Date().getTime();
-        var key = this.props.rule.id.toString();
-        chrome.storage.sync.get(key, (data) => {
-            var timeOfBlocking = data[key];
-            var timeDifference = timeNow - timeOfBlocking;
-            this.setState({ timeSinceBlocking: timeDifference });
-        });
     }
 
     componentWillUnmount() {
