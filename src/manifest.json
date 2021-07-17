@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Website Blocker",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "description": "Easily block an unlimited number of websites using this free browser extension.",
   "author": "George Church",
   "icons": {
