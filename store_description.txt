@@ -1,0 +1,22 @@
+Why install this browser extension?
+
+🚫 Easily block as many websites as you want.
+
+💲 Completely free.
+
+📚 Boost your productivity, avoid distractions, stop procrastination and stay focused.
+
+⏲️ See how long each website has been blocked for. This feature motivates you to keep websites blocked. Once you unblock a website the timer is reset to zero. Challenge yourself to see how long you can go!
+
+✅ The only permission needed is 'Block content on any page you visit'. That's it. This means that you can be reassured that your privacy and security is protected. No user data is collected.
+
+
+How to use:
+
+1) Click on the extension icon to bring up the popup window.
+2) In the popup window, click the link to go to the settings page.
+3) In the text field, enter the URL of a website (e.g. example.com) that you want to block and then press add.
+4) Your browser will then be blocked from visiting that website. This includes embeds.
+5) To unblock a website, click on the trash can icon for that website.
+
+If you like this extension, a rating would be very much appreciated. 😊
