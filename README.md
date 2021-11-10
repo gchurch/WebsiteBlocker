@@ -2,7 +2,7 @@
 
 This browser extension allows you to create a list of websites that the browser is blocked from being able to visit. This can help you to stay away from distracting websites and boost your productivity. The time that each website has been blocked for is also displayed. This feature motivates you to keep the website blocked as unblocking the website will reset the timer and it feels like you have lost your progress.
 
-The extension is published to the Edge and Chrome extension stores. At the time of writing, the Edge version has 1000+ users and 15 ratings with an average of 4.5 stars.
+The extension is published to the Edge and Chrome extension stores. At the time of writing, the Edge version has 1000+ users and 22 ratings with an average of 4.5 stars.
 
 [![Edge Add-ons](images/edge/badge.png)](https://microsoftedge.microsoft.com/addons/detail/simple-website-blocker/fbjngbafdijlfccooomdapgfebnlnicj)
 [![Chrome Web Store](images/chrome/chrome_web_store_available.png)](https://chrome.google.com/webstore/detail/website-blocker/pohdmcmfjhjnocjjhoobmhbgonebakad)
