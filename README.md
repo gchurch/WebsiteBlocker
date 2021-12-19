@@ -11,7 +11,7 @@ There are similar extensions on the extension stores, but a lot of them require 
 
 ## Technical Details
 
-The extension uses Manifest V3. In order to block the websites, the chrome.declarativeNetRequest API is used. The popup and options pages are created using React. The following template was used for this extension: https://github.com/lxieyang/chrome-extension-boilerplate-react.
+The GUI has been created using React. The extension uses Manifest V3. In order to block the websites, the chrome.declarativeNetRequest API is used. The following template was used for this extension: https://github.com/lxieyang/chrome-extension-boilerplate-react.
 
 ## Steps to run
 
